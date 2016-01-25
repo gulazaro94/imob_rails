@@ -1,0 +1,26 @@
+<h1>Autenticação</h1>
+
+
+<%= form_for @user, url: sign_in_path do |f| %>
+
+    <% if @message %>
+      <div class="alert">
+        <%= @message %>
+      </div>
+    <% end %>
+
+    <div>
+        <%= f.label :username, 'Usuário' %>
+        <%= f.text_field :username %>
+    </div>
+
+    <div>
+        <%= f.label :password, 'Senha' %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.submit 'Entrar' %>
+    </div>
+
+<% end %>

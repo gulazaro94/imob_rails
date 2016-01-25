@@ -3,15 +3,32 @@
 
 <%= form_for @user, url: '/sign_up' do |f| %>
 
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> foram encontrados</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+
     <div>
-    <%= f.label :name, 'Nome' %>
-    <%= f.text_field :name %>
+        <%= f.label :name, 'Nome' %>
+        <%= f.text_field :name %>
     </div>
 
     <div>
+    <%# teste  %>
+        <%= f.label :birth_date, 'Data de nascimento' %>
+        <%= f.date_select :birth_date, start_year: Date.today.year - 100 %>
+    </div>
 
-    <%= f.label :birth_date, 'Data de nascimento' %>
-    <%= f.text_field :birth_date %>
+    <div>
+        <%= f.label :city_id, 'Cidade' %>
+        <%= f.collection_select :city_id, City.all, :id, :name %>
     </div>
 
     <div>
@@ -26,7 +43,12 @@
 
     <div>
         <%= f.label :password, 'Senha' %>
-        <%= f.text_field :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation, 'Confirme sua senha' %>
+        <%= f.password_field :password_confirmation %>
     </div>
 
     <div>

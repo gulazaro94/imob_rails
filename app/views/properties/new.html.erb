@@ -1,0 +1,37 @@
+<h1>Cadastre seu imovel</h1>
+
+
+<%= form_for @property, url: properties_new_path do |f| %>
+
+    <% if @property.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@property.errors.count, "error") %> foram encontrados</h2>
+
+          <ul>
+          <% @property.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title %>
+    </div>
+
+
+    <div>
+        <%= f.label :description, 'Descrição' %>
+        <%= f.text_field :description %>
+    </div>
+
+    <div>
+        <%= f.label :price, 'Preço' %>
+        <%= f.text_field :price %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>
