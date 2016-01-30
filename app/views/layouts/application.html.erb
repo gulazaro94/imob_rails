@@ -8,7 +8,20 @@
 </head>
 <body>
 
-<%= yield %>
+<header>
+  <%= link_to root_path do %>
+    <h2>IMOB RAILS</h2>
+  <% end %>
+
+  <span>
+    <%= link_to 'Fazer login', sign_in_path %>
+    <%= link_to 'Cadastre-se', sign_up_path %>
+  </span>
+</header>
+
+<main>
+  <%= yield %>
+</main>
 
 </body>
 </html>
